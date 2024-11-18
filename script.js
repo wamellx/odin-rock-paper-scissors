@@ -4,7 +4,7 @@ function getComputerChoice() {
     compChoiceBasis = Math.round(compChoiceBasis)
 
     let x = compChoiceBasis
-    console.log(x)
+    //console.log(x)
 
     if (x <= 33) {
         x = "Rock"
@@ -20,9 +20,9 @@ function getComputerChoice() {
 
 }
 
-let computerChoice = getComputerChoice()
+// let computerChoice = getComputerChoice()
 
-console.log(computerChoice)
+// console.log(computerChoice)
 
 function getHumanChoice() {
 
@@ -50,10 +50,10 @@ function getHumanChoice() {
         
 }
 
-let humanChoice = getHumanChoice()
+// let humanChoice = getHumanChoice()
 
-let humanScore = 0
-let computerScore = 0
+// let humanScore = 0
+// let computerScore = 0
 
 function playRound(humanChoice, computerChoice) {
 
@@ -84,5 +84,47 @@ function playRound(humanChoice, computerChoice) {
     return winner
 }
 
-let roundWinner = playRound(humanChoice, computerChoice)
-console.log(roundWinner)
+// let roundWinner = playRound(humanChoice, computerChoice)
+// console.log(roundWinner)
+
+function playGame() {
+
+    let humanScore = 0
+    let computerScore = 0
+
+    for (let i = 0; i < 5; i++) {
+        let computerChoice = getComputerChoice()
+        let humanChoice = getHumanChoice()
+        roundWinner = playRound(humanChoice, computerChoice)
+
+        if (roundWinner == "Human") {
+            humanScore = humanScore + 1
+            console.log(`You win! Human: ${humanScore}; Computer: ${computerScore}`)
+        }
+        
+        else if (roundWinner == "Computer") {
+            computerScore = computerScore + 1
+            console.log(`You lose! Human: ${humanScore}; Computer: ${computerScore}`)
+        }
+
+        else {
+            console.log(`Tie! Human: ${humanScore}; Computer: ${computerScore}`)
+        }
+    }
+
+    if (humanScore > computerScore) {
+        console.log("You won the game!")
+    }
+
+    else if (computerScore > humanScore) {
+        console.log("You lost the game.")
+    }
+
+    else {
+        console.log("You tied!")
+    }
+
+
+}
+
+playGame()
